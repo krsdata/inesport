@@ -1,0 +1,17 @@
+
+
+#RewriteEngine On 
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://www.inesports.lt/index.php/$1 [R,L]
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ https://inesports.lt/index.php/$1 [NC,L,QSA]
+RewriteRule ^(.*)$ index.php/$1 [NC,L,QSA]
+
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#RewriteRule ^(.*)$ index.php/$1 [NC,L,QSA]
