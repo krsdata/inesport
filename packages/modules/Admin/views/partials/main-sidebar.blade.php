@@ -77,7 +77,8 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ (isset($page_action) && $page_action=='Create Category')?"active":'' }}" ><a href="{{ route('category.create')}}"><i class="fa fa-user-plus"></i> Create Category</a></li>
+          <li class="{{ (isset($page_action) && $page_action=='Create category')?"active":'' }}" ><a href="{{ route('category.create')}}"><i class="fa fa-user-plus"></i> Create Category</a></li>
+           <li class="{{ (isset($page_action) && $page_action=='Create Sub-category')?"active":'' }}" ><a href="{{ route('sub-category.create')}}"><i class="fa fa-user-plus"></i> Add Sub-category</a></li>
           <li class="{{ (isset($page_action) && $page_action=='View Category')?"active":'' }}"><a href="{{ route('category')}}"><i class="fa  fa-list"></i> View Category</a></li>
         </ul>
       </li>

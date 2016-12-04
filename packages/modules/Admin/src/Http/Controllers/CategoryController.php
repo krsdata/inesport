@@ -95,7 +95,7 @@ class CategoryController extends Controller {
     {
          
         $page_title = 'Category';
-        $page_action = 'Category category';
+        $page_action = 'Create category';
         $sub_category_name  = Category::all();
 
         return view('packages::category.create', compact( 'category','sub_category_name', 'page_title', 'page_action'));
@@ -123,7 +123,7 @@ class CategoryController extends Controller {
     public function edit(Category $category) {
 
         $page_title = 'Category';
-        $page_action = 'Show category'; 
+        $page_action = 'Edit category'; 
          $sub_category_name  = Category::all();
         
         return view('packages::category.edit', compact( 'sub_category_name','category', 'page_title', 'page_action'));

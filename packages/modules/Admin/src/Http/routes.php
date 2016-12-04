@@ -48,25 +48,48 @@
         );
         /*---------End---------*/   
   
-         /*------------User Category and controller---------*/
+        /*------------User Category and controller---------*/
 
-        Route::bind('category', function($value, $route) {
-            return Modules\Admin\Models\Category::find($value);
-        });
- 
-        Route::resource('admin/category', 'Modules\Admin\Http\Controllers\CategoryController', [
-            'names' => [
-                'edit' => 'category.edit',
-                'show' => 'category.show',
-                'destroy' => 'category.destroy',
-                'update' => 'category.update',
-                'store' => 'category.store',
-                'index' => 'category',
-                'create' => 'category.create',
-            ]
+            Route::bind('category', function($value, $route) {
+                return Modules\Admin\Models\Category::find($value);
+            });
+     
+            Route::resource('admin/category', 'Modules\Admin\Http\Controllers\CategoryController', [
+                'names' => [
+                    'edit' => 'category.edit',
+                    'show' => 'category.show',
+                    'destroy' => 'category.destroy',
+                    'update' => 'category.update',
+                    'store' => 'category.store',
+                    'index' => 'category',
+                    'create' => 'category.create',
                 ]
-        );
+                    ]
+            );
         /*---------End---------*/   
+
+
+        /*------------User Category and controller---------*/
+
+            Route::bind('sub-category', function($value, $route) {
+                return Modules\Admin\Models\Category::find($value);
+            });
+     
+            Route::resource('admin/sub-category', 'Modules\Admin\Http\Controllers\SubCategoryController', [
+                'names' => [
+                    'edit' => 'sub-category.edit',
+                    'show' => 'sub-category.show',
+                    'destroy' => 'sub-category.destroy',
+                    'update' => 'sub-category.update',
+                    'store' => 'sub-category.store',
+                    'index' => 'sub-category',
+                    'create' => 'sub-category.create',
+                ]
+                    ]
+            );
+        /*---------End---------*/  
+
+
 
 
          /*------------User Category and controller---------*/
