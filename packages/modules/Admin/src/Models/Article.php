@@ -5,6 +5,7 @@ namespace Modules\Admin\Models;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
+use Modules\Admin\Models\Category;
 
 class Article extends Authenticatable {
 
@@ -32,7 +33,7 @@ class Article extends Authenticatable {
      *
      * @var array
      */
-    protected $fillable = ['article_title','article_category','article_sub_category','description'];  // All field of user table here    
+    protected $fillable = ['article_title','article_category','description'];  // All field of user table here    
 
 
     /**
@@ -41,5 +42,11 @@ class Article extends Authenticatable {
      * @var array
      */
     
+
+    public function category()
+    {
+       
+        return $this->belongsTo('Modules\Admin\Models\Category','article_category','id');
+    }
   
 }

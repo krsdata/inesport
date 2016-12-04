@@ -73,15 +73,18 @@ class ArticleController extends Controller {
 
             $search = isset($search) ? Input::get('search') : '';
                
-            $articles = Article::where(function($query) use($search,$status) {
+            $articles = Article::with('category')->where(function($query) use($search,$status) {
                         if (!empty($search)) {
                             $query->Where('article_title', 'LIKE', "%$search%");
                         }
                         
                     })->Paginate($this->record_per_page);
         } else {
-            $articles = Article::orderBy('id','desc')->Paginate($this->record_per_page);
+            $articles = Article::with('category')->orderBy('id','desc')->Paginate($this->record_per_page);
         }
+        
+
+        $a = Article::with('category')->orderBy('id','desc')->Paginate($this->record_per_page);
         
         
         return view('packages::article.index', compact('articles', 'page_title', 'page_action'));
@@ -114,10 +117,11 @@ class ArticleController extends Controller {
 
     public function store(ArticleRequest $request, Article $article) {
         
-        return Redirect::to(route('article'))
+      /*  return Redirect::to(route('article'))
                             ->with('flash_alert_notice', 'New Article was successfully created !');
+       */ 
 
-       $article->fill(Input::all());   
+        $article->fill(Input::all());   
         $article->save(); 
        
         return Redirect::to(route('article'))
@@ -138,10 +142,9 @@ class ArticleController extends Controller {
         $cat = [];
         foreach ($category as $key => $value) {
              $cat[$value->category_name][$value->id] =  $value->sub_category_name;
-        }
+        } 
         
-        
-        return view('packages::category.edit', compact( 'cat','article', 'page_title', 'page_action'));
+        return view('packages::article.edit', compact( 'cat','article', 'page_title', 'page_action'));
     }
 
     public function update(ArticleRequest $request, Article $article) {

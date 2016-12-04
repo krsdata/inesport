@@ -54,7 +54,7 @@
                                         <table class="table table-hover table-condensed">
                                             <thead><tr>
                                                     <th>Sno</th> 
-                                                    <th>Article Name</th>
+                                                    <th>Article Title</th>
                                                     <th>Category</th>
                                                     <th>Sub Category </th>
                                                     <th>Description </th> 
@@ -77,9 +77,17 @@
                                               <tbody>    
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $result->article_category     }}</td>
-                                                    <td>{{ $result->article_sub_category }}</td>
-                                                     <td>{{ $result->description }}</td>
+                                                    <td>{!! ucfirst($result->article_title)     !!}
+
+                                                    </td>
+                                                    <td>{{ $result->category->category_name }}
+
+
+                                                    </td>
+                                                    <td>    {{ $result->category->sub_category_name }}</td>
+                                                     <td> 
+                                                        {!!  substr(html_entity_decode($result->description, ENT_QUOTES, 'UTF-8'),0,50)  !!}..
+                                                     </td>
                                                     
                                                     <td>
                                                         {!! Carbon\Carbon::parse($result->created_at)->format('m-d-Y H:i:s A'); !!}

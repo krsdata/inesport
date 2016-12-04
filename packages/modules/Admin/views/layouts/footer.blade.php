@@ -65,6 +65,17 @@
         var email_req = '{{ Lang::get('immoclick-lang.email_req') }}';
         var password_req = '{{ Lang::get('immoclick-lang.password_req') }}';
     </script>  
+    <script type="text/javascript">
+      $(function(){  
+            CKEDITOR.editorConfig = function( config ) {
+              // Other configs
+              config.filebrowserImageBrowseUrl = "<?php echo url('public/ckeditor/pictures'); ?>";
+              config.filebrowserImageUploadUrl = "<?php echo url('public/ckeditor/pictures'); ?>";
+
+            };
+
+        });
+    </script>
   
 </script>
      

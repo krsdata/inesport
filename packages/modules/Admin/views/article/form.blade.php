@@ -36,7 +36,7 @@
         </div>
     </div> 
 
-
+<!-- 
      <div class="form-group{{ $errors->first('image', ' has-error') }}">
         <label class="col-lg-4 col-md-4 control-label">Feature Image</label>
         <div class="col-lg-8 col-md-8">  
@@ -54,7 +54,7 @@
         </div>
     </div> 
 
-     
+      -->
     
     <div class="form-group">
         <label class="col-lg-4 col-md-4 control-label"></label>
