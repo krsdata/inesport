@@ -47,6 +47,49 @@
                 ]
         );
         /*---------End---------*/   
+  
+         /*------------User Category and controller---------*/
+
+        Route::bind('category', function($value, $route) {
+            return Modules\Admin\Models\Category::find($value);
+        });
+ 
+        Route::resource('admin/category', 'Modules\Admin\Http\Controllers\CategoryController', [
+            'names' => [
+                'edit' => 'category.edit',
+                'show' => 'category.show',
+                'destroy' => 'category.destroy',
+                'update' => 'category.update',
+                'store' => 'category.store',
+                'index' => 'category',
+                'create' => 'category.create',
+            ]
+                ]
+        );
+        /*---------End---------*/   
+
+
+         /*------------User Category and controller---------*/
+
+        Route::bind('article', function($value, $route) {
+            return Modules\Admin\Models\Article::find($value);
+        });
+ 
+        Route::resource('admin/article', 'Modules\Admin\Http\Controllers\ArticleController', [
+            'names' => [
+                'edit' => 'article.edit',
+                'show' => 'article.show',
+                'destroy' => 'article.destroy',
+                'update' => 'article.update',
+                'store' => 'article.store',
+                'index' => 'article',
+                'create' => 'article.create',
+            ]
+                ]
+        );
+        /*---------End---------*/  
+
+
 
         /*------------Position Model and controller---------*/
         Route::bind('position', function($value, $route) {

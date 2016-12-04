@@ -5,15 +5,14 @@ namespace Modules\Admin\Http\Requests;
 use App\Http\Requests\Request;
 use Input;
 
-class UserRequest extends Request {
+class ArticleRequest  extends Request {
 
     /**
      * The metric validation rules.
      *
      * @return array
      */
-    public function rules() {
-        //if ( $metrics = $this->metrics ) {
+    public function rules() { 
             switch ( $this->method() ) {
                 case 'GET':
                 case 'DELETE': {
@@ -21,11 +20,9 @@ class UserRequest extends Request {
                     }
                 case 'POST': {
                         return [
-                            'email'   => "required|email|unique:users,email" ,  
-                            'first_name' => 'required|min:3',
-                            'last_name' => 'required', 
-                            'password' => 'required|min:6',
-                            /*'confirm_password' => 'required|same:password'*/ 
+                            'article_title'   => "required|unique:articles,article_title" ,  
+                            'article_category' => 'required', 
+                            'description' => 'required'
                         ];
                     }
                 case 'PUT':
@@ -33,9 +30,9 @@ class UserRequest extends Request {
                     if ( $user = $this->user ) {
 
                         return [
-                            'email'   => "required|email" ,  
-                            'first_name' => 'required|min:3',
-                            'last_name' => 'required',
+                           'article_title'   => "required|unique:articles,article_title" ,  
+                            'article_category' => 'required',
+                            'description' => 'required'
                         ];
                     }
                 }

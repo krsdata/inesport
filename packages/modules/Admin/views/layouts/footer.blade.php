@@ -12,7 +12,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.0
         </div>
-        <strong>Copyright &copy; {{date('Y')}} <a href="{{ url('/')}}">Udex</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; {{date('Y')}} <a href="{{ url('/')}}">Inesport</a>.</strong> All rights reserved.
       </footer>
  
       <div class="control-sidebar-bg"></div>
@@ -56,6 +56,8 @@
     <script src="{{ URL::asset('public/assets/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ URL::asset('public/assets/js/bootbox.js') }}"></script>
     <script src="{{ URL::asset('public/assets/js/common.js') }}"></script>
+    <script src="{{ URL::asset('public/assets/plugins/ckeditor/ckeditor.js') }}"></script>
+    
     
     <script type="text/javascript">
         $(".select2").select2();

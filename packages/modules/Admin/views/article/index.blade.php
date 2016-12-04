@@ -19,16 +19,10 @@
                             <div class="row">
                                 <div class="box">
                                     <div class="box-header">
-                                        <form action="{{route('user')}}" method="get">
+                                        <form action="{{route('article')}}" method="get">
+                                           
                                             <div class="col-md-3">
-                                                <select name="status" class="form-control">
-                                                    <option value="">Sort by Status</option>
-                                                    <option value="active" @if($status==='active') selected  @endif>Active</option>
-                                                    <option value="inActive" @if($status==='inActive') selected  @endif>Inactive</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <input value="{{ (isset($_REQUEST['search']))?$_REQUEST['search']:''}}" placeholder="search by Name/Email" type="text" name="search" id="search" class="form-control" >
+                                                <input value="{{ (isset($_REQUEST['search']))?$_REQUEST['search']:''}}" placeholder="search by category" type="text" name="search" id="search" class="form-control" >
                                             </div>
                                             <div class="col-md-2">
                                                 <input type="submit" value="Search" class="btn btn-primary form-control">
@@ -36,12 +30,12 @@
                                            
                                         </form>
                                          <div class="col-md-2">
-                                             <a href="{{ route('user') }}">   <input type="submit" value="Reset" class="btn btn-default form-control"> </a>
+                                             <a href="{{ route('article') }}">   <input type="submit" value="Reset" class="btn btn-default form-control"> </a>
                                         </div>
                                         <div class="col-md-2 pull-right">
                                             <div style="width: 150px;" class="input-group"> 
-                                                <a href="{{ route('user.create')}}">
-                                                    <button class="btn  btn-primary"><i class="fa fa-user-plus"></i> Add User</button> 
+                                                <a href="{{ route('article.create')}}">
+                                                    <button class="btn  btn-primary"><i class="fa fa-user-plus"></i> Create Article</button> 
                                                 </a>
                                             </div>
                                         </div> 
@@ -59,15 +53,15 @@
                                    <div class="box-body table-responsive no-padding" >
                                         <table class="table table-hover table-condensed">
                                             <thead><tr>
-                                                    <th>Sno</th>
-                                                    <th>ID</th>
-                                                    <th>Full Name</th>
-                                                    <th>Email</th>
-                                                    <th>Signup Date</th>
-                                                    <th>Status</th>
+                                                    <th>Sno</th> 
+                                                    <th>Article Name</th>
+                                                    <th>Category</th>
+                                                    <th>Sub Category </th>
+                                                    <th>Description </th> 
+                                                    <th>Created Date</th> 
                                                     <th>Action</th>
                                                 </tr>
-                                                @if(count($users)==0)
+                                                @if(count($articles )==0)
                                                     <tr>
                                                       <td colspan="7">
                                                         <div class="alert alert-danger alert-dismissable">
@@ -78,30 +72,26 @@
                                                       </td>
                                                     </tr>
                                                   @endif
-                                                @foreach ($users as $key => $user)  
+                                                @foreach ($articles  as $key => $result)  
                                              <thead>
                                               <tbody>    
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $user->userID }}</td>
-                                                    <td>{{ $user->first_name.' '.$user->last_name }}</td>
-                                                    <td>{{ $user->email }} </td>
-                                                   
+                                                    <td>{{ $result->article_category     }}</td>
+                                                    <td>{{ $result->article_sub_category }}</td>
+                                                     <td>{{ $result->description }}</td>
+                                                    
                                                     <td>
-                                                        {!! Carbon\Carbon::parse($user->created_at)->format('m-d-Y H:i:s A'); !!}
+                                                        {!! Carbon\Carbon::parse($result->created_at)->format('m-d-Y H:i:s A'); !!}
                                                     </td>
-                                                    <td>
-                                                        <span class="label label-{{ ($user->status==1)?'success':'warning'}} status" id="{{$user->userID}}"  data="{{$user->status}}"  onclick="changeStatus({{$user->userID}},'user')" >
-                                                            {{ ($user->status==1)?'Active':'Inactive'}}
-                                                        </span>
-                                                    </td>
+                                                    
                                                     <td> 
-                                                        <a href="{{ route('user.edit',$user->userID)}}">
+                                                        <a href="{{ route('article.edit',$result->id)}}">
                                                             <i class="fa fa-fw fa-pencil-square-o" title="edit"></i> 
                                                         </a>
 
-                                                        {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$user->userID, 'route' => array('user.destroy', $user->userID))) !!}
-                                                        <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$user->userID}}"><i class="fa fa-fw fa-trash" title="Delete"></i></button>
+                                                        {!! Form::open(array('class' => 'form-inline pull-left deletion-form', 'method' => 'DELETE',  'id'=>'deleteForm_'.$result->id, 'route' => array('category.destroy', $result->id))) !!}
+                                                        <button class='delbtn btn btn-danger btn-xs' type="submit" name="remove_levels" value="delete" id="{{$result->id}}"><i class="fa fa-fw fa-trash" title="Delete"></i></button>
                                                         
                                                          {!! Form::close() !!}
 
@@ -110,7 +100,7 @@
                                                 @endforeach 
                                             </tbody></table>
                                     </div><!-- /.box-body --> 
-                                    <div class="center" align="center">  {!! $users->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div>
+                                    <div class="center" align="center">  {!! $articles->appends(['search' => isset($_GET['search'])?$_GET['search']:''])->render() !!}</div>
                                 </div>
                             </div>
                         </div>
