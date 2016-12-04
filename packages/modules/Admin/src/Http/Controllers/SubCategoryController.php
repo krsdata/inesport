@@ -99,6 +99,10 @@ class SubCategoryController extends Controller {
 
         $category_list = $sub_category_name->toArray(); 
 
+        if($sub_category_name->count()==0){  
+           return Redirect::to(route('category.create'));
+        }
+
         return view('packages::sub_category.create', compact( 'category_list','category','sub_category_name', 'page_title', 'page_action'));
     }
 
