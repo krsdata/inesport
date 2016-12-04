@@ -83,7 +83,7 @@
                                                     </td>
                                                     
                                                     <td> 
-                                                        <a href="{{ route('category.edit',$result->id)}}">
+                                                        <a href="{{ route('sub-category.edit',$result->id)}}">
                                                             <i class="fa fa-fw fa-pencil-square-o" title="edit"></i> 
                                                         </a>
 
