@@ -7,7 +7,7 @@
         <img alt="User Image" class="img-circle" src="{{ URL::asset('public/assets/dist/img/user2-160x160.jpg') }}">
       </div>
       <div class="pull-left info">
-        <p>Udex</p>
+        <p>Inesport</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
@@ -22,6 +22,7 @@
         </a>
           
       </li> 
+<!--
       <li class="treeview {{ (isset($page_action) && $page_title=='Corporate Profile')?"active":'' }} ">
         <a href="#">
           <i class="fa fa-user"></i>
@@ -56,7 +57,8 @@
            <li class="{{ (isset($page_action) && $page_action=='View Directory')?"active":'' }}"><a href="{{ url('admin/condidateDirectory')}}"><i class="fa  fa-list"></i>Candidate Directory</a></li>
         </ul>
       </li>  
-      <li class="treeview {{ (isset($page_action) && $page_title=='User')?"active":'' }} ">
+-->    
+  <li class="treeview {{ (isset($page_action) && $page_title=='User')?"active":'' }} ">
         <a href="#">
           <i class="fa fa-user"></i>
           <span>Manage Users</span>
@@ -67,7 +69,7 @@
            --><li class="{{ (isset($page_action) && $page_action=='View User')?"active":'' }}"><a href="{{ route('user')}}"><i class="fa  fa-list"></i> View User</a></li>
         </ul>
       </li>
-
+<!--
       <li class="treeview {{ (isset($page_action) && $page_title=='Position')?"active":'' }} ">
         <a href="#">
           <i class="fa fa-user"></i>
@@ -115,7 +117,7 @@
            <li class="{{ (isset($page_action) && $page_action=='View Default Criteria')?"active":'' }}"><a href="{{ route('defaultCriteria')}}"><i class="fa  fa-list"></i>Default Criteria </a></li>
         </ul>
       </li> 
-
+-->
 
     </ul>
   </section>
