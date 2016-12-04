@@ -148,9 +148,9 @@ class ArticleController extends Controller {
     }
 
     public function update(ArticleRequest $request, Article $article) {
-        
-        $category->fill(Input::all()); 
-        $category->save();
+           
+        $article->fill(Input::all()); 
+        $article->save();
         return Redirect::to(route('article'))
                         ->with('flash_alert_notice', 'Article was  successfully updated !');
     }

@@ -27,10 +27,10 @@ class ArticleRequest  extends Request {
                     }
                 case 'PUT':
                 case 'PATCH': {
-                    if ( $user = $this->user ) {
+                    if ( $article = $this->article ) {
 
                         return [
-                           'article_title'   => "required|unique:articles,article_title" ,  
+                            'article_title'   => "required" ,  
                             'article_category' => 'required',
                             'description' => 'required'
                         ];
